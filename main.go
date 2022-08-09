@@ -66,9 +66,9 @@ func deleteTodo(context *gin.Context) {
 
 	found := false
 
-	for i := 0; i < len(todoList); i++ {
-		if todoList[i].ID == id {
-			todoList = append(todoList[:i], todoList[i+1:]...)
+	for index, todo := range todoList {
+		if todo.ID == id {
+			todoList = append(todoList[:index], todoList[index+1:]...)
 			found = true
 			break
 		}

@@ -82,6 +82,12 @@ func deleteTodo(context *gin.Context) {
 
 }
 
+func indexPage(context *gin.Context) {
+	context.HTML(http.StatusOK, "index.html", gin.H{
+		"content": "This is an index page...",
+	})
+}
+
 func searchTodo(id string) (*todo, error) {
 	// for i := 0; i < len(todoList); i++ {
 	// 	if todoList[i].ID == id {
@@ -100,6 +106,12 @@ func searchTodo(id string) (*todo, error) {
 
 func main() {
 	router := gin.Default()
+
+	router.Static("/assets", "./assets")
+	router.LoadHTMLGlob("templates/*.html")
+
+	router.GET("/", indexPage)
+
 	router.GET("/todoList", getTodoList)
 	router.GET("/todoList/:id", getTodoById)
 	router.PATCH("/todoList/:id", toggleTodoStatus)

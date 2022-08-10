@@ -10,9 +10,11 @@ An API developed in Go that performs CRUD operation on a Todo List
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`PORT`
-
-`DSN`
+| ENV      | Example                                                       |
+| -------- | ------------------------------------------------------------- |
+| `PORT`   | 3000                                                          |
+| `DSN`    | "host=x user=x password=x dbname=x port=3000 sslmode=disable" |
+| `SECRET` | SECRET                                                        |
 
 ## Installation
 

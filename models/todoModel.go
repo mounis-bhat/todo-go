@@ -6,4 +6,5 @@ type Todo struct {
 	gorm.Model
 	Item      string
 	Completed bool
+	UserID    int64
 }

@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"example/todo-go/initializers"
+	"example/todo-go/middleware"
 	"example/todo-go/models"
 
 	"net/http"
@@ -18,13 +19,12 @@ func IndexPage(context *gin.Context) {
 func CreateTodo(context *gin.Context) {
 
 	var body struct {
-		Item      string
-		Completed bool
+		Item string
 	}
 
 	context.Bind(&body)
 
-	todo := models.Todo{Item: body.Item, Completed: body.Completed}
+	todo := models.Todo{Item: body.Item, Completed: false, UserID: middleware.Id}
 	result := initializers.DB.Create(&todo)
 
 	if result.Error != nil {

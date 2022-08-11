@@ -12,6 +12,8 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 )
 
+var Id int64
+
 func RequireAuth(context *gin.Context) {
 	tokenString, authError := context.Cookie("Authorization")
 
@@ -44,7 +46,7 @@ func RequireAuth(context *gin.Context) {
 			context.AbortWithStatus(http.StatusUnauthorized)
 		}
 
-		context.Set("user", user)
+		Id = int64(user.ID)
 
 		context.Next()
 	} else {

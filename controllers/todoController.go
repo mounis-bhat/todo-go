@@ -40,7 +40,7 @@ func CreateTodo(context *gin.Context) {
 func GetTodoList(context *gin.Context) {
 	var todoList []models.Todo
 
-	initializers.DB.Find(&todoList)
+	initializers.DB.Where("user_id = ?", middleware.Id).Find(&todoList)
 
 	context.JSON(200, gin.H{
 		"todoList": todoList,
@@ -53,7 +53,7 @@ func GetTodo(context *gin.Context) {
 
 	var todo models.Todo
 
-	initializers.DB.First(&todo, id)
+	initializers.DB.Where("user_id = ?", middleware.Id).Find(&todo, id)
 
 	context.JSON(200, gin.H{
 		"todo": todo,
@@ -71,7 +71,7 @@ func UpdateTodo(context *gin.Context) {
 	context.Bind(&body)
 	var todo models.Todo
 
-	initializers.DB.First(&todo, id)
+	initializers.DB.Where("user_id = ?", middleware.Id).Find(&todo, id)
 	initializers.DB.Model(&todo).Updates(models.Todo{
 		Item: body.Item, Completed: body.Completed,
 	})
@@ -83,7 +83,13 @@ func UpdateTodo(context *gin.Context) {
 func DeleteTodo(context *gin.Context) {
 	id := context.Param("id")
 
-	initializers.DB.Delete(&models.Todo{}, id)
+	var todo models.Todo
 
-	context.Status(200)
+	initializers.DB.Where("user_id = ?", middleware.Id).Find(&todo, id)
+
+	initializers.DB.Delete(&todo)
+
+	context.JSON(200, gin.H{
+		"todo": todo,
+	})
 }

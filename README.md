@@ -18,10 +18,10 @@ To run this project, you will need to add the following environment variables to
 
 ## Installation
 
-Install Go
-
 ```bash
-  Install compile deamon on your machine to enable live reloading
+  Install Go
+
+  Install compile daemon on your machine to enable live reloading
 
   Create a postgres DB and use environment variables to sync
 ```
@@ -32,4 +32,8 @@ To run this project run
 
 ```bash
   CompileDaemon -command="./todo-go"
+
+  or
+
+  go run main.go
 ```

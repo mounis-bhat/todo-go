@@ -18,22 +18,20 @@ To run this project, you will need to add the following environment variables to
 
 ## Installation
 
-```bash
-  Install Go
-
-  Install compile daemon on your machine to enable live reloading
-
-  Create a postgres DB and use environment variables to sync
-```
+Install Go
+Install compile daemon on your linux machine to enable live reloading (Only works on linux)
+Create a postgres DB and use environment variables to sync
 
 ## Run
 
-To run this project run
+Run using compile daemon
 
 ```bash
   CompileDaemon -command="./todo-go"
+```
 
-  or
+or
 
+```bash
   go run main.go
 ```

@@ -19,7 +19,7 @@ func main() {
 
 	config := cors.DefaultConfig()
 
-	config.AllowOrigins = []string{"react-playground-lake-eight.vercel.app", "http://127.0.0.1:5173", "http://localhost:5173"}
+	config.AllowOrigins = []string{"https://react-playground-lake-eight.vercel.app/", "http://127.0.0.1:5173", "http://localhost:5173"}
 	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
 	config.AllowHeaders = []string{"Authorization", "Content-Type"}
 	config.AllowCredentials = true

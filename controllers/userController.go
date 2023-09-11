@@ -98,7 +98,7 @@ func Login(context *gin.Context) {
 	}
 
 	context.SetSameSite(http.SameSiteLaxMode)
-	context.SetCookie("Authorization", tokenString, 3600*24*30, "", "", true, true)
+	context.SetCookie("Authorization", tokenString, 3600*24*30, "/", "react-playground-lake-eight.vercel.app", true, true)
 
 	context.JSON(http.StatusOK, gin.H{
 		"success": "logged in",

@@ -105,3 +105,18 @@ func Login(context *gin.Context) {
 	})
 
 }
+
+func Logout(context *gin.Context) {
+	context.SetCookie("Authorization", "", -1, "", "", false, true)
+
+	context.JSON(http.StatusOK, gin.H{
+		"success": "Logged out",
+	})
+}
+
+func IsAuthenticated(context *gin.Context) {
+
+	context.JSON(200, gin.H{
+		"logged in": "true",
+	})
+}

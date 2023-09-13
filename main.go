@@ -39,9 +39,6 @@ func main() {
 
 	router.POST("/sign-up", controllers.SignUp)
 	router.POST("/login", controllers.Login)
-	router.GET("/logout", controllers.Logout)
-
-	router.GET("/status", middleware.RequireAuth, controllers.IsAuthenticated)
 
 	router.Run()
 }

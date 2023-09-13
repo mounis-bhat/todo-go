@@ -97,26 +97,7 @@ func Login(context *gin.Context) {
 		return
 	}
 
-	context.SetSameSite(http.SameSiteNoneMode)
-	context.SetCookie("Authorization", tokenString, 3600*24*30, "/", "react-playground-lake-eight.vercel.app", true, true)
-
 	context.JSON(http.StatusOK, gin.H{
-		"success": "logged in",
-	})
-
-}
-
-func Logout(context *gin.Context) {
-	context.SetCookie("Authorization", "", -1, "", "", true, true)
-
-	context.JSON(http.StatusOK, gin.H{
-		"success": "Logged out",
-	})
-}
-
-func IsAuthenticated(context *gin.Context) {
-
-	context.JSON(200, gin.H{
-		"logged in": "true",
+		"token": tokenString,
 	})
 }
